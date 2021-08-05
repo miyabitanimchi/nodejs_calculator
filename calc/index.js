@@ -56,7 +56,7 @@ router.get('/add/:num1/:num2', function (req, res) {
   var num1 = parseInt(req.params.num1)
   var num2 = parseInt(req.params.num2)
   var sum = (num1 + num2).toString()
-  res.send(sum)
+  res.send(`<h1 style="color:red;">${sum}</h1>`)
 })
 
 router.get('/subtract/:num1/:num2', function (req, res) {
@@ -80,36 +80,30 @@ router.get('/divide/:num1/:num2', function (req, res) {
   res.send(quotient)
 })
 
-router.get('/test/isPrime/:number', function (req, res)
-{
-var start = Date.now();
-var finish = undefined;
+router.get('/test/isPrime/:number', function (req, res) {
+  var start = Date.now();
+  var finish = undefined;
 
-if (req.params.number===1)
-  {
-   finish = Date.now() -start;
-    var sendBack = [false,finish]
+  if (req.params.number === 1) {
+    finish = Date.now() - start;
+    var sendBack = [false, finish]
     res.send(sendBack);
   }
-  else if(req.params.number === 2)
-  {
-   finish = Date.now() -start;
-   var sendBack = [true,finish]
-   res.send(sendBack);
-  }else
-  {
-    for(var x = 2; x < req.params.number; x++)
-    {
-      if(req.params.number % x === 0)
-      {
-        finish = Date.now() -start;
-	var sendBack = [false,finish]
+  else if (req.params.number === 2) {
+    finish = Date.now() - start;
+    var sendBack = [true, finish]
+    res.send(sendBack);
+  } else {
+    for (var x = 2; x < req.params.number; x++) {
+      if (req.params.number % x === 0) {
+        finish = Date.now() - start;
+        var sendBack = [false, finish]
         res.send(sendBack);
-	return;
+        return;
       }
     }
-   finish = Date.now() -start;
-   var sendBack = [true,finish]
+    finish = Date.now() - start;
+    var sendBack = [true, finish]
     res.send(sendBack);
   }
 })
